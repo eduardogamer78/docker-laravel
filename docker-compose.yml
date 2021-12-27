@@ -1,0 +1,80 @@
+version: "3.8"
+
+services:
+  # custom image
+  app:
+    build:
+      args:
+        user: eduardogamer
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: laravel-app
+    working_dir: /var/www/projects
+    volumes:
+      - ./projects:/var/www/projects
+    restart: unless-stopped
+    ports: 
+        - "9000:9000"
+    depends_on:
+      - redis
+      - queue
+    networks:
+      - docker-laravel
+  
+  #nginx
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./confs/servers/:/etc/nginx/conf.d/
+      - ./projects:/var/www/projects
+      - ./confs/ssl/:/var/www/ssl
+    networks:
+      - docker-laravel
+
+  # db
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./confs/mariadb_db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=laravel
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    networks:
+      - docker-laravel
+  
+  # redis
+  redis:
+    image: redis:latest
+    networks:
+      - docker-laravel
+
+  # queue
+  queue:
+    build:
+      args:
+        user: eduardogamer
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    command: "php artisan queue:work"
+    volumes:
+      - ./:/var/www/projects
+    depends_on:
+      - redis
+    networks:
+      - docker-laravel
+
+networks:
+  docker-laravel:
+    driver: bridge
