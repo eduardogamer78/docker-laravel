@@ -6,7 +6,7 @@ Clone Repositório
 git clone https://github.com/eduardogamer/docker-laravel.git
 ```
 
-Clone os Arquivos do Laravel
+Cria uma pasta com nome projects e Clone os Arquivos do Laravel-8
 ```sh
 git clone https://github.com/laravel/laravel.git laravel-8
 ```
@@ -20,7 +20,7 @@ cp .env.example .env
 Atualizar as variáveis de ambiente do arquivo .env
 ```dosini
 APP_NAME=Laravel
-APP_URL=https://localhost
+APP_URL=https://localhost/projects/laravel-8/public
 
 DB_CONNECTION=mysql
 DB_HOST=mariadb
