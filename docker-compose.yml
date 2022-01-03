@@ -12,6 +12,8 @@ services:
     restart: unless-stopped
     volumes:
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+    ports:
+      - "9000:9000"
     depends_on:
       - redis
       - queue
@@ -53,6 +55,8 @@ services:
     volumes:
       - ${DATA_PATH_HOST}/mariadb:/var/lib/mysql
       - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+    ports:
+      - "${MARIADB_PORT}:3306"
     environment:
       - TZ=${WORKSPACE_TIMEZONE}
       - MYSQL_DATABASE=${MARIADB_DATABASE}
