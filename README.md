@@ -45,7 +45,7 @@ docker-compose up -d apache2 mariadb redis
 
 Acessar o container
 ```sh
-docker-compose exec php-fpm bash
+docker-compose exec app bash
 ```
 
 Instalar as dependências do projeto
