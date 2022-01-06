@@ -1,6 +1,6 @@
 .idea
 .vscode
-/logs
+/logs/nginx/*.log
 /data
 .env
 
