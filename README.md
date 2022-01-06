@@ -6,7 +6,7 @@ Clone Repositório
 git clone https://github.com/eduardogamer78/docker-laravel.git
 ```
 
-Cria uma pasta com nome projects e Clone os Arquivos do Laravel-8
+Clone os Arquivos do Laravel-8
 ```sh
 git clone https://github.com/laravel/laravel.git laravel-8
 ```
