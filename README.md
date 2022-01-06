@@ -59,4 +59,4 @@ php artisan key:generate
 ```
 
 Acessar o projeto
-[https://localhost/projects/laravel-8/public](https://localhost/projects/laravel-8/public)
+[https://localhost/laravel-8/public](https://localhost/laravel-8/public)
