@@ -2,7 +2,7 @@ FROM nginx:alpine
 
 COPY nginx.conf /etc/nginx/
 
-# If you're in China, or you need to change sources, will be set CHANGE_SOURCE to true in .env.
+# .env.
 
 ARG CHANGE_SOURCE=false
 RUN if [ ${CHANGE_SOURCE} = true ]; then \
