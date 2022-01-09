@@ -20,7 +20,7 @@ cp .env.example .env
 Atualizar as variáveis de ambiente do arquivo .env
 ```dosini
 APP_NAME=Laravel
-APP_URL=https://localhost/projects/laravel-8/public
+APP_URL=https://localhost/
 
 DB_CONNECTION=mysql
 DB_HOST=mariadb
@@ -40,12 +40,12 @@ REDIS_PORT=6379
 
 Suba os containers do projeto
 ```sh
-docker-compose up -d apache2 mariadb redis
+docker-compose up -d
 ```
 
 Acessar o container
 ```sh
-docker-compose exec app bash
+docker-compose exec php-fpm bash
 ```
 
 Instalar as dependências do projeto
@@ -59,4 +59,4 @@ php artisan key:generate
 ```
 
 Acessar o projeto
-[https://localhost/laravel-8/public](https://localhost/laravel-8/public)
+[https://localhost/](https://localhost/)
