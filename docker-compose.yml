@@ -4,11 +4,10 @@ services:
   # custom image
   php-fpm:
     build:
-      context: ./php
       args:
-        - http_proxy
-        - https_proxy
-        - no_proxy
+          user: eduardogamer
+          uid: 1000
+      context: ./php
     restart: unless-stopped
     volumes:
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
@@ -93,6 +92,9 @@ services:
   # queue
   queue:
     build:
+      args:
+          user: eduardogamer
+          uid: 1000
       context: ./php
     restart: unless-stopped
     volumes:
