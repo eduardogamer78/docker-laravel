@@ -11,6 +11,8 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends \
     curl \
     git \
+    zip \
+    unzip \
     libmemcached-dev \
     libz-dev \
     libpq-dev \
@@ -21,10 +23,10 @@ RUN set -eux; \
     libwebp-dev \
     libxpm-dev \
     libmcrypt-dev \
-    libonig-dev; \
-    zip \
-    unzip \
-    rm -rf /var/lib/apt/lists/*
+    libonig-dev;
+
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
     # Install the PHP pdo_mysql extention
