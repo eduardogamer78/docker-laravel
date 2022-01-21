@@ -10,6 +10,7 @@ RUN set -eux; \
     apt-get upgrade -y; \
     apt-get install -y --no-install-recommends \
     curl \
+    git \
     libmemcached-dev \
     libz-dev \
     libpq-dev \
