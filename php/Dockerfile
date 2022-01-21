@@ -22,6 +22,8 @@ RUN set -eux; \
     libxpm-dev \
     libmcrypt-dev \
     libonig-dev; \
+    zip \
+    unzip \
     rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
